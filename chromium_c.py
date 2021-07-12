@@ -9,7 +9,7 @@ class SeleniumHelper():
 
         Args: 
             self.driver(String): Path of the webdriver on system, specific to browser used. Defaults to chromium.
-            self.url(String): URL of webstibe on which the automation will occur.
+            self.url(String): URL of website on which the automation will occur.
         """
         if driver:
             self.driver = driver
@@ -34,3 +34,22 @@ class SeleniumHelper():
             data(string): data to be inserting to the specified id. 
         """
         return self.driver.find_element_by_id(id).send_keys(data)
+    
+    def send_by_name(self, name, data):
+        """This method is reponsible for finding the "name" of the HTML element &
+           inserting the "data" into that field name. 
+        
+        Args:
+            id(string)  : id of the HTML webpage field
+            data(string): data to be inserting to the specified id. 
+        """
+        return self.driver.find_element_by_name(name).send_keys(data)
+    
+    def fill_password(self):
+        pass
+    
+    def confirm_password(self):
+        pass
+
+    def click(self):
+        pass
