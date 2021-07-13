@@ -25,7 +25,7 @@ class SeleniumHelper():
         """
         return self.driver.get(self.url)
     
-    def send_by_id(self, id, data):
+    def send_by_id(self, id, data = None):
         """This method is reponsible for finding the "id" of the HTML element &
            inserting the "data" into that field ID. 
         
@@ -33,23 +33,33 @@ class SeleniumHelper():
             id(string)  : id of the HTML webpage field
             data(string): data to be inserting to the specified id. 
         """
-        return self.driver.find_element_by_id(id).send_keys(data)
+        if data:
+            return self.driver.find_element_by_id(id).send_keys(data)
+
+        return self.driver.find_element_by_id(id)
     
-    def send_by_name(self, name, data):
+    def send_by_name(self, name, data = None):
         """This method is reponsible for finding the "name" of the HTML element &
            inserting the "data" into that field name. 
         
         Args:
-            id(string)  : id of the HTML webpage field
+            name(string)  : name of the HTML webpage field
+            data(string)  : data to be inserting to the specified id. 
+        """
+        if data:
+            return self.driver.find_element_by_name(name).send_keys(data)
+
+        return self.driver.find_element_by_name(name)
+    
+    def send_by_xpath(self, xpath, data = None):
+        """This method is reponsible for finding the "name" of the HTML element &
+           inserting the "data" into that field name. 
+        
+        Args:
+            xpath(string)  : xpath of the HTML webpage field
             data(string): data to be inserting to the specified id. 
         """
-        return self.driver.find_element_by_name(name).send_keys(data)
-    
-    def fill_password(self):
-        pass
-    
-    def confirm_password(self):
-        pass
-
-    def click(self):
-        pass
+        if data:
+            return self.driver.find_element_by_xpath(xpath).send_keys(data)
+        
+        return self.driver.find_element_by_xpath(xpath)
